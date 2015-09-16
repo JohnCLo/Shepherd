@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Project Shepherd</title>
+	<meta name="google-site-verification" content="evsTVNnmRTpO-1FP0C6h67nN_jVhi3UMECBvIWU0L0c" />
+	<meta name="readability-verification" content="Gu7YJftB4rrYU3q3xp6PNTULt4FFr7UQvY8V24Ez"/>
+	<meta name="readability-verification" content="Hh8nYQtz3BPg7NrLnyvzc66FfYExQwHASbNxutcw"/>
+	<link rel="stylesheet" href="stylesheets/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="http://use.typekit.net/swo8ypc.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.js'></script>
+  	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.css' rel='stylesheet' />
+
+  	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+
+	<script type="text/javascript" src="d3/d3.js"></script>
+    <script type="text/javascript" src="d3/d3.geom.js"></script>
+    <script type="text/javascript" src="d3/d3.layout.js"></script>
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.0/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <style>
+body { margin:0; padding:0; }
+#demo {
+position: relative;
+height: 400px;
+}
+
+#demo_foodsecurity {
+position: relative;
+height: 600px;
+}
+#demo_targetpopulation {
+position: relative;
+height: 300px;
+}
+#demo_school {
+position: relative;
+height: 400px;
+width: 50%;
+float:left;
+}
+#demo_health {
+position: relative;
+height: 400px;
+width: 50%;
+float:left;
+}
+#demo_node {
+position: relative;
+height: 600px;
+}
+#distribution {
+	position:relative;
+	height: 395px;
+	background: url(wajir.jpg) no-repeat center center;
+}
+.leaflet-popup-content-wrapper {
+	padding: 1px;
+	text-align: left;
+	-webkit-border-radius: 2px !important;
+	border-radius: 2px !important;
+}
+#map {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#map_foodsecurity {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#map_targetpopulation {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#map_school {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#map_health {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#map_node {
+	background: #fff;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.leaflet-right {
+right: 0;
+width: 390px;
+}
+
+circle.node {
+  cursor: pointer;
+  stroke: #000;
+  stroke-width: 0.3px;
+}
+
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 0.5px;
+}
+  </style>
+	
+</head>
+<body class="photo post">	
+		
+	<header>
+		<h1>Project Shepherd</h1>
+		<p class="reading-time">Reading time: 13 minutes, 54 seconds</p>
+		<p class='location'>Northeastern Pastoral Zone, Kenya</p>
+	</header>
+	
+	<article>
+		<p>
+	<img alt='Sheep' src='http://bomaproject.org/wp-content/header-images/woman-header.jpg'/>
+	</p>
+	<p>
+		
+	</p>
+	<p>
+		Nomadic Pastoralists pose an interesting challenge to the administration of public health – their populations are transient and oftentimes cross international borders as part of seasonal migration patterns. The stateless nature of nomadic groups often marginalizes them from the public administration of health more logistically situated for sedentary populations.<br/><br/>
+
+		Ultimately, malnutrition in the form of acute vitamin A deficiencies is highly associated with both seasonal and drought patterns that affect the milk supply of accompanying livestock that provide a critical component of micronutrients. We outline the growing threat to micronutrient security nomadic pastoralists face in the Northeastern Pastoral Zone in Kenya, centered around the Wajir District amid the growing extremes in global climate and general unaccountability for those that do not conform to sedentary lifestyles.
+	</p>
+	<p>
+		<img alt='Wandering Downtown' src='cow.jpg'/>
+		<div id='demo'>
+			<div id='map'></div>
+			<script type='text/javascript'>
+			var map = L.mapbox.map('map', 'johnlo1992.map-1u17khi6');
+			map.scrollWheelZoom.disable();
+			</script>
+		</div>
+	</p>
+	<p>
+		"We like all milk. It satisfies hunger, we become strong and healthy and playful and happy. It is given to us during Gu and Deyr [the rainy seasons]. During Hagaa and Jilaal [the dry seasons] we get soor, tea with milk and ambula. When milk becomes less we get less playful and weak." 
+	</p>
+	<p>
+		"Milk is reduced in everything during drought. We drink black tea and rice as a soup with chili. The name for shuro without milk is yaabis (dry), even though the taste of shuro changes without milk we have to eat it because sorghum is one of the cheapest flours."
+	</p>
+	<p>
+		<img alt='Falls' src='milkconsumption.jpg'/>
+	<p>
+		"<strong>However, nomadic pastoralist retinol levels may be decreased during the dry season when milk consumption is reduced as a result of lower production and higher milk sales.</strong> In the study area, sufficient milk consumption, complemented by dietary fruits and green vegetables, could maintain adequate retinol status. It is crucial to implement a programme of food education emphasising the importance of animal based sources of vitamin A such as liver and milk, in addition to locally available products such as Spirulina or plant based products, despite the limited bioavailability of vitamin A precursors from fruits and vegetables. The results support an ecological linkage between human retinol level and livestock milk retinol." <br/><br/>-<em>M. Bechir, E. Schelling, K. Kraemer, F. Schweigert, B. Bonfoh, L. Crump, M. Tanner, J. Zinsstag</em>
+	<br/><br/>
+	</p>
+	<p>
+		<img></img>
+		<div id='demo_foodsecurity'>
+			<div id='map_foodsecurity'></div>
+			<script type='text/javascript'>
+			var map_foodsecurity = L.mapbox.map('map_foodsecurity', 'johnlo1992.map-e1yddcby');
+			map_foodsecurity.scrollWheelZoom.disable();
+			</script>
+		</div>
+	</p>
+	<p>
+		As the price of food rises due to continuous drought conditions on the Horn of Africa, pastorialists are most at risk for micronutrient deficiencies due to an increased inability to purchase the balanced diets Bechir advocates above.
+	<br/><br/><br/><br/>
+	</p>
+	<p>
+	<img alt='Pirate Rocks' src='pathforward.jpg'/>
+	</p>
+	<p>	
+		<strong>Objectives:</strong> Reduce seasonal acute micronutrient deficiencies as the result of decreased milk production during Jilaal. We aim to reduce the compounded cycle of deficiency and infection by targeting those most vulnerable during the appropriate months of Novemember to December.
+	</p>
+	<p>
+		<img></img>
+		<div id='demo_targetpopulation'>
+			<div id='map_targetpopulation'></div>
+			<script type='text/javascript'>
+			var map_targetpopulation = L.mapbox.map('map_targetpopulation', 'johnlo1992.map-89x20hn3');
+			map_targetpopulation.scrollWheelZoom.disable();
+			</script>
+		</div>
+	</p>
+	<p>
+
+		<strong>Target Population:</strong> Nomadic pastoral children in USAID and UNESCO funded primary mobile school initiatives.
+		<br/><br/>
+		<strong>Intervention:</strong> High dose Vitamin A supplements of 200,000 IU prior to the Jilaal season in November coordinated between fixed health care services based on existing structures and a Dugsi or mobile school teacher selected by the community and trained by EMACK and NOHA. This dosing shcedule will last for 4 months (December-April) to offer a 30% protective effect against mortality. <br/><br/>
+		Among mobile schools within the Northeastern Pastoral Region randomly selected to receive the intervention we will further select through randomization certain schools to recieve additional camels and goats for a factorial study design. <br/><br/>
+		The inclusion of diversifying lifestock is introduced as a supplementary intervention to determine whether there is a significant effect on the long term nutritional status of children given the addition of livestock more resiliant to drought.
+	</p>
+	<p>
+		<img alt='Its Gone' src='dugsi.jpg'/>
+		<div id='demo'>
+			<div id='demo_school'>
+				<div id='map_school'></div>
+				<script type='text/javascript'>
+				var map_school = L.mapbox.map('map_school', 'johnlo1992.map-83k2jb3a', {zoomControl: false});
+				map_school.scrollWheelZoom.disable();
+				</script>
+			</div>
+			<div id ='demo_health'>
+				<div id='map_health'></div>
+				<script type='text/javascript'>
+				var map_health = L.mapbox.map('map_health', 'johnlo1992.map-ywcyltid', {zoomControl: false});
+				map_health.scrollWheelZoom.disable();
+				</script>
+			</div>
+		</div>
+	</p>
+		<p>
+		<img><img/>
+	</p>
+	<p>
+		<strong>Implementation:</strong> Designating existing fixed structures as primary health care service medical posts to recieve, maintain, and distribute supplementation. Health teams will coordinate with Dugsi or mobile school teachers who are responsible for reporting the location and health needs of a 'Rer’ (a cluster of family units that live together under a headman) with a minimum of 10 households. Distribution of Vitamin A supplements will be coordinated with mobile school teachers who will serve as a medium between the nomadic tribes and health services. These fixed medical posts will also relieve the burdens of supplementation management and security often faced by traditional feeding schools.
+		<br/><br/>
+		Designating mobile school teachers, already familiar with their surrounding families, as "Shepherds" will facilitate better system of coverage that has often been too expensive for traditional mobile health units through local trust and serving as information relays.
+
+	</p>
+	<p>
+		<img></img>
+		<div id='distribution'></div>
+	</p>
+	<p>
+		<img></img>
+	</p>
+	<p>
+			<strong>Mobile Technologies for Mobile Schools</strong>
+			<br/><br/>
+			Given the recent mobile technology boom in Africa, where setting up landlines is both outdated and costly mobile schools should be equipped with relatively low cost gps systems and cellular phones to convey locations in situations where addresses don't exist. Through periodic 'check-ins', each fixed health center will be able to track which groups are currently within their range of service and ultimately which groups are scheduled for data sampling after our Vitamin A trial has expired.
+	</p>
+		<div id='demo_node'>
+			<div id='map_node'></div>
+			
+			<script type='text/javascript'>
+			var map_node = L.mapbox.map('map_node', 'johnlo1992.map-rrom8pwf', {zoomControl: false});
+			map_node.scrollWheelZoom.disable();
+			</script>
+			
+		</div>
+		<p>
+			Ultimately we promote a system where each operating group plays to their strengths. Health care units manage logistics and distributions while Shepherds serve as intermediaries and promoters of community trust and education. By delegating such responsibilities both serve in tandem to create a system of sustainable development in reaching affected populations without demanding conformation or change in lifestyles.
+		</p>
+		<p>
+			<img alt='Northern Lights' src='foreword.jpg'/>
+		</p>
+		<p>
+			We aim to build a system to increase coverage in a demographic that has often been marginalized from society through cooperation with existing representatives that serve as effective mediators of health. While the root issues of micronutrient deficiency such as livestock maintenance, providing interventions for pregnant and nursing mothers have yet to be addressed we hope that building upon a sustainable foundation inherently linked to increased educational coverage will offer future promises.
+		</p>
+		</p>
+		
+		<div class='article-footer'>
+			<p class="date">
+				Monday, April 22, 2013
+				<a href="#" class='back-to-top'>Back to Top</a>
+			</p>
+			<p class='navigation' style='display:none;'>
+				<span class='key'><strong>J</strong> = Next Image</span> 
+				<span class='key'><strong>K</strong> = Prev Image</span> 
+			</p>
+		</div>
+	</article>
+	
+	
+	
+<footer>
+	
+	<ul class="links">
+		<li class="email"><a ref="nofollow" href=" ">email</a></li>
+	</ul>
+	
+	<p class='agc'>An SLS19 Project by Holly, James, John, and Keith. Fall 2013.</a></p>
+</footer>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$("p:has(img)").addClass('img');
+			
+			// $("img").first().on("mouseover", function(e){
+			// 	$("header h1, header .reading-time, nav.top").delay(460).animate({opacity:0}, 1200);
+			// }).on("mouseout", function(e){
+			// 	$("header h1, header .reading-time, nav.top").animate({opacity:1}, 600);
+			// });
+			
+		});
+	</script>
+	<script src="javascript/app.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+
+var w = 1280,
+    h = 395,
+    node,
+    link,
+    root;
+
+var force = d3.layout.force()
+    .on("tick", tick)
+    .charge(function(d) { return d._children ? -d.size / 100 : -30; })
+    .linkDistance(function(d) { return d.target._children ? 80 : 30; })
+    .size([w, h - 160]);
+
+var vis = d3.select("#distribution").append("svg:svg")
+    .attr("width", w)
+    .attr("height", h);
+
+d3.json("flare.json", function(json) {
+  root = json;
+  root.fixed = true;
+  root.x = w / 2;
+  root.y = h / 2;
+  update();
+});
+
+function update() {
+  var nodes = flatten(root),
+      links = d3.layout.tree().links(nodes);
+
+  // Restart the force layout.
+  force
+      .nodes(nodes)
+      .links(links)
+      .start();
+
+  // Update the links…
+  link = vis.selectAll("line.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links.
+  link.enter().insert("svg:line", ".node")
+      .attr("class", "link")
+      .attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  // Exit any old links.
+  link.exit().remove();
+
+  // Update the nodes…
+  node = vis.selectAll("circle.node")
+      .data(nodes, function(d) { return d.id; })
+      .style("fill", color);
+
+  node.transition()
+      .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) / 10; });
+
+  // Enter any new nodes.
+  node.enter().append("svg:circle")
+      .attr("class", "node")
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) / 10; })
+      .style("fill", color)
+      .on("click", click)
+      .call(force.drag);
+
+  // Exit any old nodes.
+  node.exit().remove();
+}
+
+function tick() {
+  link.attr("x1", function(d) { return d.source.x; })
+      .attr("y1", function(d) { return d.source.y; })
+      .attr("x2", function(d) { return d.target.x; })
+      .attr("y2", function(d) { return d.target.y; });
+
+  node.attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; });
+}
+
+// Color leaf nodes orange, and packages white or blue.
+function color(d) {
+  return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  update();
+}
+
+// Returns a list of all nodes under the root.
+function flatten(root) {
+  var nodes = [], i = 0;
+
+  function recurse(node) {
+    if (node.children) node.size = node.children.reduce(function(p, v) { return p + recurse(v); }, 0);
+    if (!node.id) node.id = ++i;
+    nodes.push(node);
+    return node.size;
+  }
+
+  root.size = recurse(root);
+  return nodes;
+}
+
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-40358234-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
+<!-- Localized -->
